@@ -75,7 +75,8 @@ RUN set -x \
 	&& apk add --virtual .tomcat-native-rundeps $runDeps \
 	&& apk del .fetch-deps .native-build-deps \
 	&& rm -rf "$nativeBuildDir" \
-	&& rm bin/tomcat-native.tar.gz
+	&& rm bin/tomcat-native.tar.gz \
+	&& sed -i -r 's#^(securerandom.source)=.*#\1=file:/dev/./urandom/#' $JAVA_HOME/lib/security/java.security
 
 # verify Tomcat Native is working properly
 RUN set -e \
@@ -86,8 +87,6 @@ RUN set -e \
 		echo >&2 "$nativeLines"; \
 		exit 1; \
 	fi
-
-RUN sed -i -r 's#^(securerandom.source)=.*#\1=file:/dev/./urandom/#' $JAVA_HOME/jre/lib/security/java.security
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
