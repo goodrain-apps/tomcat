@@ -76,7 +76,7 @@ RUN set -x \
 	&& apk del .fetch-deps .native-build-deps \
 	&& rm -rf "$nativeBuildDir" \
 	&& rm bin/tomcat-native.tar.gz \
-	&& sed -i -r 's#^(securerandom.source)=.*#\1=file:/dev/./urandom/#' $JAVA_HOME/lib/security/java.security
+	&& sed -i -r 's%^(securerandom.source)=.*%\1=file:/dev/./urandom/%' $JAVA_HOME/lib/security/java.security
 
 # verify Tomcat Native is working properly
 RUN set -e \
