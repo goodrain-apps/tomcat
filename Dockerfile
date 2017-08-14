@@ -10,7 +10,7 @@ ENV TOMCAT_NATIVE_LIBDIR $CATALINA_HOME/native-jni-lib
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$TOMCAT_NATIVE_LIBDIR
 
 RUN apk add --no-cache gnupg \
-        && sed -i -r 's%^(securerandom.source)=.*%\1=file:/dev/./urandom/%' $JAVA_HOME/lib/security/java.security
+        && sed -i -r 's#^(securerandom.source)=.*#\1=file:/dev/./urandom/#' $JAVA_HOME/lib/security/java.security
 
 # see https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS
 # see also "update.sh" (https://github.com/docker-library/tomcat/blob/master/update.sh)
