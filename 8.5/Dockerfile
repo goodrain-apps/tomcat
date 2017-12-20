@@ -91,5 +91,9 @@ RUN set -e \
 		exit 1; \
 	fi
 
+# set JAVA_OPTS	
+COPY setmem.sh /usr/local/tomcat/bin/setmem.sh
+RUN sed -i "N;2a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
