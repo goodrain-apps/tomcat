@@ -34,6 +34,6 @@ case $MEMORY_SIZE in
        ;;
     *)
        export JAVA_OPTS="-Xms512m -Xmx512m -Xss512k -XX:MaxDirectMemorySize=24M"
-       echo " MEMORY_SIZE environment variable is not set, use the default memory settings" >&2
+       echo "MEMORY_SIZE environment variable is not set, use the default memory settings" >&2
        ;;
 esac
