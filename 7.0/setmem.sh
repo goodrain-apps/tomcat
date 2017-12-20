@@ -1,5 +1,5 @@
 # set default_java_mem_opts
-case ${MEMORY_SIZE:-small} in
+case $MEMORY_SIZE in
     "micro")
        export JAVA_OPTS="-Xms90m -Xmx90m -Xss512k  -XX:MaxDirectMemorySize=12M"
        echo "Optimizing java process for 128M Memory...." >&2
