@@ -128,6 +128,9 @@ RUN sed -i "2 a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
+# add redis session lib
+COPY lib /usr/local/tomcat/lib
+
 # add pinpoint apm agent
 ENV PINPOINT_AGETN_VERSION="1.7.0-RC2"
 ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent" 
