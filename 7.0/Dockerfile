@@ -123,13 +123,17 @@ RUN set -e \
 	fi
 # set JAVA_OPTS	
 COPY setmem.sh /usr/local/tomcat/bin/setmem.sh
-RUN sed -i "N;2a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
+RUN sed -i "2 a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 # add pinpoint apm agent
-ADD pinpoint-agent-1.7.0-RC2.tar.gz /user/local/pinpoint-agent
+ENV PINPOINT_AGETN_VERSION="1.7.0-RC2"
+ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent" 
+COPY pinpoint-agent.sh /usr/local/tomcat/bin
+RUN mkdir -pv $PINPOINT_AGENT_PATH \
+	&& curl -ks https://pkg.goodrain.com/apps/pinpoint/pinpoint-agent-${PINPOINT_AGETN_VERSION}.tar.gz | tar xz -C /usr/local/pinpoint-agent
 
 EXPOSE 8080
 
