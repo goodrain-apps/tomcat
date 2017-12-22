@@ -125,5 +125,13 @@ RUN set -e \
 COPY setmem.sh /usr/local/tomcat/bin/setmem.sh
 RUN sed -i "N;2a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
 
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+# add pinpoint apm agent
+ADD pinpoint-agent-1.7.0-RC2.tar.gz /user/local/pinpoint-agent
+
 EXPOSE 8080
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["catalina.sh", "run"]
