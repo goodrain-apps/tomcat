@@ -9,9 +9,9 @@ fi
 
 # redis sersion
 if [ "$REDIS_SESSION" == "true" ];then
-sed -i 'd#</Context>#' /usr/local/tomcat/conf/context.xml
+sed -i 's#</Context>##' /usr/local/tomcat/conf/context.xml
 
-cat >>  /usr/local/tomcat/conf/context.xml<< END
+cat >>  /usr/local/tomcat/conf/context.xml << END
 <Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />
 <Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager"
              host="127.0.0.1" 
