@@ -6,10 +6,10 @@
 ## 使用方式
 可以作为应用的基础镜像使用
 
-···dockerfile
+```dockerfile
 FROM goodrainapps/tomcat:7.0.82-jre7-alpine
 COPY demo.war /usr/local/tomcat/webapps/
-···
+```
 
 ## 支持的参数
 
