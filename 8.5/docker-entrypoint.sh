@@ -5,6 +5,7 @@
 REDIS_HOST=${REDIS_HOST:-127.0.0.1}
 REDIS_PORT=${REDIS_HOST:-6379}
 
+
 # detect ENABLE_APM env
 if [ "$ENABLE_APM" == "true" ];then
     COLLECTOR_IP=${COLLECTOR_IP:-127.0.0.1}
