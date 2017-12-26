@@ -134,7 +134,7 @@ COPY lib /usr/local/tomcat/lib
 # add pinpoint apm agent
 ENV PINPOINT_AGETN_VERSION="1.7.0-RC2"
 ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent" 
-COPY pinpoint-agent.sh /usr/local/tomcat/bin
+COPY pinpoint/pinpoint-agent.sh /usr/local/tomcat/bin
 RUN mkdir -pv $PINPOINT_AGENT_PATH \
 	&& curl -ks https://pkg.goodrain.com/apps/pinpoint/pinpoint-agent-${PINPOINT_AGETN_VERSION}.tar.gz | tar xz -C /usr/local/pinpoint-agent
 
