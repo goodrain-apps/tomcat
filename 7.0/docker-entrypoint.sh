@@ -4,8 +4,11 @@
 
 # detect ENABLE_APM env
 if [ "$ENABLE_APM" == "true" ];then
-    sed -i "2 a. /usr/local/tomcat/bin/pinpoint-agent.sh" /usr/local/tomcat/bin/catalina.sh 
+    COLLECTOR_IP=${COLLECTOR_IP:-127.0.0.1}
+    sed -i "2 a. /usr/local/tomcat/bin/pinpoint-agent.sh" /usr/local/tomcat/bin/catalina.sh
+    sed -i -r "s/(profiler.collector.ip)=.*/\1=${COLLECTOR_IP}/" /usr/local/pinpoint-agent/pinpoint.config
 fi
+
 
 # redis sersion
 if [ "$REDIS_SESSION" == "true" ];then
