@@ -122,8 +122,7 @@ RUN set -e \
 		exit 1; \
 	fi
 # set JAVA_OPTS	
-COPY setmem.sh /usr/local/tomcat/bin/setmem.sh
-RUN sed -i "2 a. /usr/local/tomcat/bin/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
+RUN sed -i "2 a. /opt/goodrain/java/setmem.sh" /usr/local/tomcat/bin/catalina.sh 
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
