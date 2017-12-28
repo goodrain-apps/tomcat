@@ -98,7 +98,9 @@ COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 # add redis session lib
-COPY lib /usr/local/tomcat/lib
+ENV REDIS_SESSION_VER=2.2.2
+ENV REDIS_SESSION_URL=https://pkg.goodrain.com/apps/java/session
+RUN wget -O $CATALINA_HOME/lib/redis-session-manager.jar $REDIS_SESSION_URL/redis-session-manager-${REDIS_SESSION_VER}-SNAPSHOT.jar
 
 # add pinpoint apm agent
 COPY pinpoint/pinpoint-agent.sh /usr/local/tomcat/bin

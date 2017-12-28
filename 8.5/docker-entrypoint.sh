@@ -18,12 +18,23 @@ if [ "$REDIS_SESSION" == "true" ];then
 sed -i 's#</Context>##' /usr/local/tomcat/conf/context.xml
 
 cat >>  /usr/local/tomcat/conf/context.xml << END
-<Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />
-<Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager"
-             host="$REDIS_HOST" 
-             port="$REDIS_PORT" 
-             database="0" 
-             maxInactiveInterval="60"  />
+<Manager className="com.crimsonhexagon.rsm.redisson.SingleServerSessionManager"
+	endpoint="redis://$REDIS_HOST:$REDIS_PORT"
+	sessionKeyPrefix="_rsm_"
+	saveOnChange="false"
+	forceSaveAfterRequest="false"
+	dirtyOnMutation="false"
+	ignorePattern=".*\\.(ico|png|gif|jpg|jpeg|swf|css|js)$"
+	maxSessionAttributeSize="-1"
+	maxSessionSize="-1"
+	allowOversizedSessions="false"
+	connectionPoolSize="100"
+	database="0"
+	timeout="60000"
+	pingTimeout="1000"
+	retryAttempts="20"
+	retryInterval="1000"
+/>
 </Context>
 
 END
