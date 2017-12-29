@@ -23,21 +23,9 @@ ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.82
 ENV TOMCAT_SHA1 4681bfbc86bb4da76a7aabbb3c545475eb9a8075
 
-ENV TOMCAT_TGZ_URLS \
-# https://issues.apache.org/jira/browse/INFRA-8753?focusedCommentId=14735394#comment-14735394
-	https://www.apache.org/dyn/closer.cgi?action=download&filename=tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
-# if the version is outdated, we might have to pull from the dist/archive :/
-	https://www-us.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
-	https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
-	https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ENV TOMCAT_TGZ_URLS https://pkg.goodrain.com/apps/tomcat/${TOMCAT_MAJOR}.0/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
-ENV TOMCAT_ASC_URLS \
-	https://www.apache.org/dyn/closer.cgi?action=download&filename=tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz.asc \
-# not all the mirrors actually carry the .asc files :'(
-	https://www-us.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz.asc \
-	https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz.asc \
-	https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz.asc
-
+ENV TOMCAT_ASC_URLS https://pkg.goodrain.com/apps/tomcat/${TOMCAT_MAJOR}.0/apache-tomcat-${TOMCAT_VERSION}.tar.gz.asc
 RUN set -eux; \
 	\
 	apk add --no-cache --virtual .fetch-deps \
