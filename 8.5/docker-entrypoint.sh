@@ -41,4 +41,6 @@ END
 
 fi
 
+sleep ${PSUSE:-0}
+
 exec $@
