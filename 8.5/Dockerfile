@@ -24,8 +24,8 @@ RUN set -ex; \
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.5.20
-ENV TOMCAT_TGZ_URL http://pkg.goodrain.com/dockerfile/tomcat/8.5/apache-tomcat-8.5.20.tar.gz
-ENV TOMCAT_ASC_URL http://pkg.goodrain.com/dockerfile/tomcat/8.5/apache-tomcat-8.5.20.tar.gz.asc
+ENV TOMCAT_TGZ_URL http://pkg.goodrain.com/apps/tomcat/8.5/apache-tomcat-8.5.20.tar.gz
+ENV TOMCAT_ASC_URL http://pkg.goodrain.com/apps/tomcat/8.5/apache-tomcat-8.5.20.tar.gz.asc
 
 RUN set -x \
 	\
