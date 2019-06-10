@@ -21,7 +21,7 @@ if [ "$ENABLE_APM" == "true" ];then
               -e "s/(profiler.collector.span.port)=.*/\1=${COLLECTOR_UDP_SPAN_LISTEN_PORT}/" \
               -e "s/(profiler.collector.stat.port)=.*/\1=${COLLECTOR_UDP_STAT_LISTEN_PORT}/" /usr/local/pinpoint-agent/pinpoint.config
     export APP_NAME=${APP_NAME:-${SERVICE_NAME:-${HOSTNAME}}}
-    export AGENT_ID=${APP_NAME}-${HOST_IP}
+    export AGENT_ID=${APP_NAME}-${POD_IP}
 fi
 
 # redis sersion
