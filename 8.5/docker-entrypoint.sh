@@ -1,6 +1,7 @@
 #!/bin/bash
 
 [[ $DEBUG ]] &&  set -x
+[[ $PORT ]] && sed -i "s/8080/${PORT}/g" /usr/local/tomcat/conf/server.xml
 
 REDIS_URL=${REDIS_URL:-127.0.0.1:6379}
 REDIS_HOST=${REDIS_URL%:*}
